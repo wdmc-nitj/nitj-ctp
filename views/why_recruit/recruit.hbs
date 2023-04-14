@@ -9,7 +9,7 @@
   <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  {{!-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
   <style>
     * {
@@ -279,7 +279,7 @@
 
 
   function formClick() {
-    content.innerHTML = `<iframe src="/jobForm.pdf" width="90%" height="1000px" style=" margin: auto; margin-top: 10px;"></iframe>`;
+    content.innerHTML = `<p class="text-center m-5"><a href="/jobForm.docx" class="bg-white border border-sky-400 rounded-lg shadow-md shadow-sky-500 transition-shadow duration-300 ease-in-out text-md px-5 py-2.5 text-center mr-2 mb-2">Download Word File</a></p><iframe src="/jobForm.pdf" width="90%" height="1000px" style=" margin: auto; margin-top: 10px;"></iframe>`;
     document.getElementById("come_here").scrollIntoView({ behavior: 'smooth' });
   }
 
