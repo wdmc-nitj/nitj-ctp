@@ -23,7 +23,7 @@
     <!--whole page wrapper -->
     <div id="wrapper">
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -64,7 +64,7 @@
                             </ul>
                         </li>
 
-                        <li>
+                        {{!-- <li>
                             <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Notices<span
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -73,6 +73,20 @@
                                 </li>
                                 <li>
                                     <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Edit Notice</a>
+                                </li>
+                            </ul>
+                        </li> --}}
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> NITJ Message<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Message</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Message</a>
                                 </li>
                             </ul>
                         </li>
@@ -109,11 +123,26 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Add New
-                                        Insight</a>
+                                        Insight info</a>
                                 </li>
                                 <li>
                                     <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Edit
-                                        Insight</a>
+                                        Insight info</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-image" aria-hidden="true"></i> Insights Images <span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Add
+                                        New Insight Images</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight Images</a>
                                 </li>
                             </ul>
                         </li>
@@ -129,6 +158,21 @@
                                 <li>
                                     <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Edit
                                         Insight</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Downloadable Content<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Content</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Content</a>
                                 </li>
                             </ul>
                         </li>
@@ -175,9 +219,25 @@
                         </li>
 
                         <li>
+                            <a href="#"><i class="fa fa-code" aria-hidden="true"></i> Post Recruiters<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Recruiters Details</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Edit Recruiters
+                                        Details</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
                             <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Users<span
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+
                                 <li>
                                     <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
                                 </li>

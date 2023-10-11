@@ -9,7 +9,7 @@
   <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-  {{!-- <script src="https://cdn.tailwindcss.com"></script> --}}
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     * {
@@ -72,7 +72,7 @@
       <ol class="inline-flex items-center">
         <li class="inline-flex items-center">
           <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
-          </a><a href="{{URL}}/" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
+          </a><a href="{{URL}}" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
         </li>
         <li aria-current="page">
           <div class="inline-flex items-center">
@@ -182,7 +182,7 @@
             <span class="animate-delay material-symbols-outlined" style="font-size: 48px">
               share</span>
             <h3 class="text-lg text-sky-500">Alumni</h3>
-            <p class="text-justify space-x-1.5 space-y-1.5">The institute recognises alumni who have distinguished themselves through their work and done the
+            <p>The institute recognises alumni who have distinguished themselves through their work and done the
               institute
               proud. The institute also involves the alumni in its educational activities, whenever possible, by
               inviting
@@ -193,17 +193,16 @@
             <span class="animate-delay material-symbols-outlined" style="font-size: 48px">
               equalizer</span>
             <h3 class="text-lg text-sky-500">Ranking</h3>
-            <p class="text-justify space-x-1.5 space-y-1.5">According to NIRF Ranking 2023 we ranked 46<sup>th</sup> in Engineering Ranking, 72<sup>nd</sup> in
-              overall ranking and placed in the band of 11th-50th rank in the ARIIA rankings by Ministry of Education. Also we ranked 45th amongst all Indian University/Institutes according to total h-index.
-              {{!-- Also according to Indian Institutional Ranking Framework 2022 (IIRF) we ranked --}}
-              {{!-- 46<sup>th</sup> amongst all Govt. Engineering Institutes and stood 2<sup>nd</sup> rank in Punjab.</p> --}}
+            <p>According to NIRF ranking 2022 we ranked 52<sup>nd</sup> in Engineering Ranking and 85<sup>th</sup> in
+              overall ranking. Also according to Indian Institutional Ranking Framework 2022 (IIRF) we ranked
+              47<sup>th</sup> amongst all Govt. Engineering Institutes and stood 2<sup>nd</sup> rank in Punjab.</p>
           </div>
           <div
             class="flex-col items-center justify-center text-center space-y-3 w-72 h-96 max-w-md overflow-hidden bg-white border border-sky-400 rounded-lg shadow-md shadow-sky-500 transition-shadow duration-300 ease-in-out p-2">
             <span class="animate-delay material-symbols-outlined" style="font-size: 48px">
               manage_accounts</span>
             <h3 class="text-lg text-sky-500">Selection Process</h3>
-            <p class="text-justify space-x-1.5 space-y-1.5">In NIT Jalandhar B.Tech students are admitted through there JEE MAINS score or through DASA. M.Tech
+            <p>In NIT Jalandhar B.Tech students are admitted through there JEE MAINS score or through DASA. M.Tech
               students
               get admission on basis of there score in GATE exam. In addition, admission to MSc and MBA programmes is
               done
@@ -214,7 +213,7 @@
             <span class="animate-delay material-symbols-outlined" style="font-size: 48px">
               grid_view</span>
             <h3 class="text-lg text-sky-500">Development</h3>
-            <p id="come_here" class="text-justify space-x-1.5 space-y-1.5">There are 15 departments which consist of highly educated and experienced staff with
+            <p id="come_here">There are 15 departments which consist of highly educated and experienced staff with
               teaching
               assistants. There are total 10 clubs which perform varoius activities and improve the social/cultural
               skills
@@ -280,7 +279,7 @@
 
 
   function formClick() {
-    content.innerHTML = `<p class="text-center m-5"><a href="/jobForm.docx" class="bg-white border border-sky-400 rounded-lg shadow-md shadow-sky-500 transition-shadow duration-300 ease-in-out text-md px-5 py-2.5 text-center mr-2 mb-2">Download Word File</a></p><iframe src="/jobForm.pdf" width="90%" height="1000px" style=" margin: auto; margin-top: 10px;"></iframe>`;
+    content.innerHTML = `<iframe src="/jobForm.pdf" width="90%" height="1000px" style=" margin: auto; margin-top: 10px;"></iframe>`;
     document.getElementById("come_here").scrollIntoView({ behavior: 'smooth' });
   }
 

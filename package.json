@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "tailwind build -i ./src/style.css -o public/style.css --minify && nodemon server.js",
-    "deploy": "yarn && tailwind build -i ./src/style.css -o public/style.css --minify",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,8 +28,5 @@
     "path": "^0.12.7",
     "read-excel-file": "^5.5.3",
     "xlsx": "^0.18.5"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.3.1"
   }
 }

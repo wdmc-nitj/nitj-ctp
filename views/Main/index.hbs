@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{!-- <script src="https://cdn.tailwindcss.com"></script> --}}
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png" />
   <title>TPO - NITJ</title>
   <style>
@@ -19,6 +19,34 @@
       position: fixed;
       display: none;
     }
+
+    /* Custom CSS for the bottom slider */
+.bottom-slider {
+  
+    width: 100%;
+     /* Background color of the slider */
+}
+
+.slider-content {
+    
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+.slide {
+    width: 100px; /* Adjust the width of the individual slides */
+    height: auto;
+    margin: 5px; /* Adjust the margin between slides */
+}
+@keyframes scroll {
+   0% {
+        transform: translateX(100%); /* Start from the right edge */
+    }
+    100% {
+        transform: translateX(-100%); /* Move to the left edge */
+    }
+}
+
   </style>
 </head>
 
@@ -51,109 +79,13 @@
 
   {{!-- Introduction Body --}}
   <div class="main-body m-10">
-    <div class="container flex flex-col items-start gap-[20px] lg:gap-[16px]">
-      <div class="w-full flex flex-col items-start">
-        <p class="font2 font-medium text-[28px] lg:text-[32px]">About Us</p>
-        <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
-      </div>
-      <div id="Introduction">
-        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
-          National Institute of Technology, Jalandhar
-          is well known for its technical education throughout the country. It enjoys a very good and warm
-          relationship with the industry. It is one of the most favorite destination for Corporate house as they are
-          aware of the fact that NITJ is known to introduce bright, vibrant and effervescent young minds to the
-          industry. We feel pleasure to invite your esteemed Organization to participate in the Campus Recruitment
-          Programme. This is an opportunity to inform your good self that the Placement level achieved for the
-          previous batches has been fairly impressive till date.
-        </p>
-      </div>
+    <div class="container flex flex-col items-start gap-[20px] lg:gap-[16px]" id = "Introduction">
+       
     </div>
   </div>
 
   {{!-- further pages --}}
-  <div class="grid grid-cols-2 m-[5%] sm: lg:grid-cols-6 gap-8 max-w-6xl lg:mx-auto">
-
-    {{!-- Placement Page --}}
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl">
-      <a href="{{URL}}/index_placements" class="flex flex-col space-y-4 items-center justify-center">
-        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
-          style="font-size: 48px">
-          quick_reference_all
-        </span>
-        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-          Placements
-        </p>
-      </a>
-    </div>
-
-    {{!-- Internships Page --}}
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl">
-      <a href="{{UDL}}/index_internship" class="flex flex-col space-y-4 items-center justify-center">
-        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
-          style="font-size: 48px">
-          work_history
-        </span>
-        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-          Internships
-        </p>
-      </a>
-    </div>
-
-    {{!-- Why Recruit page --}}
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl">
-      <a href="{{URL}}/index_wrecruit" class="flex flex-col space-y-4 items-center justify-center">
-        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
-          style="font-size: 48px">
-          person_search</span>
-        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-          Why Recruit
-        </p>
-      </a>
-    </div>
-
-    {{!-- Downloads --}}
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl">
-      <a href="{{URL}}/index_download" class="flex flex-col space-y-4 items-center justify-center">
-        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
-          style="font-size: 48px">
-          cloud_download</span>
-        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-          Downloads
-        </p>
-      </a>
-    </div>
-
-    {{!-- People page --}}
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl">
-      <a href="{{URL}}/index_people" class="flex flex-col space-y-4 items-center justify-center">
-        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
-          style="font-size: 48px">
-          group</span>
-        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-          People
-        </p>
-      </a>
-    </div>
-
-    {{!-- Login Page --}}
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl">
-      <a href="{{URL}}/index_student_faqs" class="flex flex-col space-y-4 items-center justify-center">
-        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
-          style="font-size: 48px">
-          help_center</span>
-        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-          FAQ's
-        </p>
-      </a>
-    </div>
-
-  </div>
+ 
 
 
   <!-- announcement section and notice -->
@@ -174,18 +106,18 @@
     </div>
 
     <!-- notice board -->
-    <div class="flex flex-col w-11/12 sm:w-1/2 ml-2 mr-2 sm:mr-5">
+    {{!-- <div class="flex flex-col w-11/12 sm:w-1/2 ml-2 mr-2 sm:mr-5">
       <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Notices</h1>
       <div id="notes" class="font2 font-semibold">
 
       </div>
-    </div>
+    </div> --}}
   </div>
 
   <!-- past recruiters -->
   <div class="flex flex-col justify-center item-center mt-5 mb-5 mx-5">
     <h1 class="sm:text-4xl text-3xl title-font font-medium text-gray-900 p-3 text-center mt-2 mb-5">PAST RECRUITERS</h1>
-    <div class="flex flex-row w-full overflow-auto mb-5">
+    {{!-- <div class=" overflow-x-auto flex flex-row w-full" id = "prDetails">
       <img src="./img/microsoft.png" alt="microsoft" class="mx-auto">
       <img src="./img/google.png" alt="google" class="mx-auto">
       <img src="./img/oracle.png" alt="oracle" class="mx-auto">
@@ -194,6 +126,19 @@
       <img src="./img/uber.png" alt="uber" class="mx-auto">
       <img src="./img/goldman.png" alt="goldman" class="mx-auto">
       <img src="./img/bajaj.png" alt="bajaj" class="mx-auto">
+    </div> --}}
+    <div class="bottom-slider" id="bottomSlider">
+        <div class="slider-content">
+            <img src="./img/microsoft.png" alt="microsoft" class="mx-auto">
+      <img src="./img/google.png" alt="google" class="mx-auto slide">
+      <img src="./img/oracle.png" alt="oracle" class="mx-auto slide">
+      <img src="./img/intel.png" alt="intel" class="mx-auto slide">
+      <img src="./img/samsung.png" alt="samsung" class="mx-auto side">
+      <img src="./img/uber.png" alt="uber" class="mx-auto slide">
+      <img src="./img/goldman.png" alt="goldman" class="mx-auto slide">
+      <img src="./img/bajaj.png" alt="bajaj" class="mx-auto slide">
+            <!-- Add more images as needed -->
+        </div>
     </div>
   </div>
 
@@ -214,11 +159,39 @@
 {{!-- Attach Backend with frontend --}}
 <script>
 
+  // Post Recruiter Scroll Bar
+const bottomSlider = document.getElementById('bottomSlider');
+const sliderContent = document.querySelector('.slider-content');
+const slides = document.querySelectorAll('.slide');
+
+let currentIndex = 0;
+
+function nextSlide() {
+    currentIndex++;
+    if (currentIndex === slides.length) {
+        currentIndex = 0;
+    }
+    updateSlider();
+}
+
+function updateSlider() {
+    const translateX = -currentIndex * (100 + 10); // Adjust the width and margin of the slides
+    sliderContent.style.transform = `translateX(${translateX}px)`;
+}
+
+setInterval(nextSlide, 3000); // Change slide every 3 seconds (adjust as needed)
+
   // for announcements
   const link1 = "{{URL}}/Announcements/"
 
   // for notices
-  const link2 = `{{URL}}/Notices/`;
+  // const link2 = `{{URL}}/Notices/`;
+
+  // for message
+  const link3 = `{{URL}}/NitjMessage/`
+
+  // for post Recruitment
+  const link4 = `{{URL}}/Placement_Insights_Img/`
 
   fetch(link1)
     .then(response => response.json())
@@ -249,7 +222,7 @@
       }
     });
 
-  fetch(link2)
+ /*fetch(link2)
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -263,8 +236,70 @@
         itr++;
         if (itr == 5) break;
       }
+    }); */
+
+    fetch(link3)
+    .then(response => response.json())
+    .then(data => {
+       
+
+      let message = document.getElementById("Introduction");
+      let dm = "", hm = "", tpom = "";
+      for(let i =0;i < data.length ;i++)
+      {
+        if(data[i].category == "Director Message")
+        dm = data[i].content
+        else if(data[i].category == "Head Message")
+        hm = data[i].content
+        else if(data[i].category == "Training and Placement Message")
+        tpom = data[i].content
+      }
+       
+       message.innerHTML = ` <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Director</p>
+        <div class="bg-accent w-full lg:w-[300px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+          ${dm}
+        </p>
+      </div>
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Head </p>
+        <div class="bg-accent w-full lg:w-[261px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+          ${hm}
+        </p>
+      </div>
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Training and Placement</p>
+        <div class="bg-accent w-full lg:w-[510px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+          ${tpom}
+        </p>
+      </div>`
     });
 
+fetch(link4)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+
+      let postRD = document.getElementById("prDetails");
+   
+
+      for (let i =0; i<data.length; i++) {
+        if(data[i].category == "company_logo") {
+        const postRDTemplate = `<img src=${data[i].link} alt=${data[i].category} class="mx-auto">`
+        postRD.innerHTML += postRDTemplate;
+        }
+        
+      }
+    });
   // Get the button
   let mybutton = document.getElementById("btn-back-to-top");
 

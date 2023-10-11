@@ -18,8 +18,11 @@ const processesRouter = require("./routes/processes");
 const policiesRouter = require("./routes/policies");
 const usersRouter = require("./routes/users");
 const placement_insightsRouter = require("./routes/placement_insights");
+const placement_insightsRouter_img = require("./routes/placement_insights_img")
+const nitj_messages = require("./routes/nitj_messages");
 const internship_insightsRouter = require("./routes/internship_insights");
 const placement_statsRouter = require("./routes/placement_stats");
+const download = require("./routes/download");
 
 require("dotenv").config();
 const hbs = require("hbs");
@@ -75,10 +78,13 @@ app.use("/FAQs", faqsRouter);
 app.use("/People", peopleRouter);
 app.use("/Processes", processesRouter);
 app.use("/Policies", policiesRouter);
+app.use("/NitjMessage",nitj_messages)
 app.use("/Users", usersRouter);
 app.use("/Internship_Insights", internship_insightsRouter);
 app.use("/Placement_Insights", placement_insightsRouter);
+app.use("/Placement_Insights_Img", placement_insightsRouter_img);
 app.use("/Placement_Stats", placement_statsRouter);
+app.use("/Download", download);
 
 app.get("/", (req, res) => {
   res.render("Main/index.hbs", { URL: process.env.URL });
@@ -149,12 +155,28 @@ app.get("/admin/placement_insights", (req, res) => {
   res.render("admin_panel/placement_insights.hbs", { URL: process.env.URL });
 });
 
+app.get("/admin/placement_insights_img", (req, res) => {
+  res.render("admin_panel/placement_insights_img.hbs", { URL: process.env.URL });
+});
+
 app.get("/admin/internship_insights", (req, res) => {
   res.render("admin_panel/internship_insights.hbs", { URL: process.env.URL });
 });
 
 app.get("/admin/placement_stats", (req, res) => {
   res.render("admin_panel/placement_stats.hbs", { URL: process.env.URL });
+});
+
+app.get("/admin/nitjMessage", (req, res) => {
+  res.render("admin_panel/nitjMessage.hbs", { URL: process.env.URL });
+});
+
+app.get("/admin/download",(req, res) =>{
+  res.render("admin_panel/download.hbs", { URL: process.env.URL });
+})
+
+app.get("/admin/PRDetails", (req, res) => {
+  res.render("admin_panel/PRDetails.hbs", { URL: process.env.URL });
 });
 
 app.get("/logout", (req, res) => {
