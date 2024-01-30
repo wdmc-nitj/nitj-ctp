@@ -51,8 +51,7 @@
         }
         .image-grid img {
             width: 100%; /* Force images to take the full width of their container */
-            height: auto; /* Maintain the image's aspect ratio */
-            max-height: 200px; /* Adjust the maximum height as needed */
+            
             object-fit: cover; /* Preserve the aspect ratio and crop if necessary */
         }
         /* Custom CSS for the fixed-width right part */
@@ -209,7 +208,7 @@
       .then((response) => response.json())
       .then(async (data) => {
          console.log(data)
-        innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">`
+        innerHTML += `<div class="flex h-full"><div class="w-3/4 p-4">`
         innerHTML += `
         <div class ="image-grid">`
         for(let i = 0; i < data.length; i++) {
@@ -225,7 +224,7 @@
       .then((response) => response.json())
       .then(async (data) => {
         console.log(data)
-        innerHTML += `</div><div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end">`
+        innerHTML += `</div><div class="w-1/4 h-screen p-4 overflow-y-auto flex justify-end">`
         let str1 = `<div class="mx-auto">`;
         let str2 = "";
         let i =0
