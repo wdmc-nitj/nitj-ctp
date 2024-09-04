@@ -184,44 +184,151 @@
     document.getElementById("come_here").scrollIntoView({ behavior: 'smooth' });
   }
 
-  function insightClick() {
+
+
+
+
+
+   function insightClick() {
+
     const link1 = `{{URL}}/Internship_Insights/`;
+
     const link2 = `{{URL}}/Placement_Insights_Img/`;
-    let innerHTML =  ""
-    fetch(link2)
-      .then((response) => response.json())
-      .then(async (data) => {
-        innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">
-        <div class="image-grid">`
-        for(let i = 0; i < data.length; i++) {
-          if(data[i].category == "ii_images")
-          innerHTML += `<img src=${data[i].link} alt="Image">`
+
+    let innerHTML = "";
+
+    let currentIndex = 0;
+
+    const imagesPerPage = 10;
+
+
+
+    function loadImages(data, startIndex) {
+
+        let endIndex = startIndex + imagesPerPage;
+
+        let imageHTML = "";
+
+
+
+        for (let i = startIndex; i < endIndex && i < data.length; i++) {
+
+            if (data[i].category == "ii_images") {
+
+                imageHTML += `<img src="${data[i].link}" alt="Image">`;
+
+            }
+
         }
 
-        innerHTML += `</div>`
-      });
 
-       fetch(link1)
-      .then((response) => response.json())
-      .then(async (data) => {
-        
-        let str1 = `</div><div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end"><div class="mx-auto">`;
-        let str2 = "";
-        let i =0;
-          for ( i = 0; i < data.length-1; i++) {
-          var student = data[i];
-          str2 += `
-<p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p>
-            `;
-          }
 
-        let str3 = `<p style="border: 2px solid rgb(55, 141, 246);  padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p></div>`;
-        innerHTML += str1 + str2 + str3;
-         innerHTML +="</div></div>"
-      content.innerHTML = innerHTML;
-      });
-       
-  }
+        innerHTML += imageHTML;
+
+        return endIndex;
+
+    }
+
+
+
+    fetch(link2)
+
+        .then((response) => response.json())
+
+        .then(async (data) => {
+
+            innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">
+
+                          <div class="image-grid">`;
+
+
+
+            currentIndex = loadImages(data, currentIndex);
+
+
+
+            innerHTML += `</div><button id="viewMoreImages" class="btn btn-primary">View More</button>`;
+
+        });
+
+
+
+    fetch(link1)
+
+        .then((response) => response.json())
+
+        .then(async (data) => {
+
+            let str1 = `</div><div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end"><div class="mx-auto">`;
+
+            let str2 = "";
+
+            let i = 0;
+
+
+
+            for (i = 0; i < data.length - 1; i++) {
+
+                var student = data[i];
+
+                str2 += `
+
+                <p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding:5px; padding-left: 20px; padding-right: 20px;">
+
+                ${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}
+
+                </p>`;
+
+            }
+
+
+
+            let str3 = `<p style="border: 2px solid rgb(55, 141, 246); padding:5px; padding-left: 20px; padding-right: 20px;">
+
+            ${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}
+
+            </p></div>`;
+
+
+
+            innerHTML += str1 + str2 + str3;
+
+            innerHTML += "</div></div>";
+
+            content.innerHTML = innerHTML;
+
+
+
+            // Add event listener for the "View More" button
+
+            document.getElementById("viewMoreImages").addEventListener("click", function () {
+
+                currentIndex = loadImages(data, currentIndex);
+
+                if (currentIndex >= data.length) {
+
+                    document.getElementById("viewMoreImages").style.display = "none";
+
+                }
+
+                content.innerHTML = innerHTML;
+
+            });
+
+        });
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
   function addStylingToContent() {
     // Add bullots
