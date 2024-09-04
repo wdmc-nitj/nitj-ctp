@@ -265,7 +265,8 @@
               <div class="row">
                 <div class="col-lg-6">
                   <form role="form" id="addForm">
-                    <div class="form-group">
+                   
+                    {{!-- <div class="form-group">
                       <label>Select the Type</label>
                       <select id="addcategory" name="menu" class="form-control">
                         <option value="">
@@ -276,6 +277,11 @@
                         <option value="Faculty">Faculty</option>
                         <option value="Student">Student</option>
                       </select>
+                    </div> --}}
+
+                    <div class="form-group">
+                      <label>Enter the Post of person</label>
+                      <input class="form-control" placeholder="Enter the Post of person" id="addcategory" name="category" />
                     </div>
 
                     <div class="form-group">
@@ -314,6 +320,11 @@
 
                     <div class="form-group">
                       <label>Designation</label>
+                      <input class="form-control" placeholder="Enter Designation of Person" id="adddesignation" name="designation" />
+                    </div>
+
+                    {{!-- <div class="form-group">
+                      <label>Designation</label>
                       <select id="adddesignation" name="Designation" class="form-control">
                         <option value="">
                           Select type of the person.
@@ -327,7 +338,8 @@
                         <option value="Placement Representative">Placement Representative</option>
                         <option value="Internship Representative">Internship Representative</option>
                       </select>
-                    </div>
+                    </div> --}}
+
                     <div class="form-group">
                       <label>Mobile No.</label>
                       <input class="form-control" placeholder="Enter Mobile No. of Person" id="addmobileno"
