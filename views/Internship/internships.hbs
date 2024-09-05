@@ -187,13 +187,14 @@
   function insightClick() {
     const link1 = `{{URL}}/Internship_Insights/`;
     const link2 = `{{URL}}/Placement_Insights_Img/`;
+    const maxImages = 20;
     let innerHTML =  ""
     fetch(link2)
       .then((response) => response.json())
       .then(async (data) => {
         innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">
         <div class="image-grid">`
-        for(let i = 0; i < data.length; i++) {
+        for(let i = 0; i < Math.min(data.length, maxImages); i++) {
           if(data[i].category == "ii_images")
           innerHTML += `<img src=${data[i].link} alt="Image">`
         }
