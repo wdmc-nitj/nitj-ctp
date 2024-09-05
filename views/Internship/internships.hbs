@@ -191,7 +191,7 @@
 
     fetch(link2)
         .then((response) => response.json())
-        .then((data) => {
+        .then((imageData) => {
             // Initialize the image grid container
             innerHTML += `
                 <div class="flex h-screen">
@@ -199,12 +199,12 @@
                         <div class="image-grid">
             `;
 
-            // Load all images in one shot
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].category === "ii_images") {
-                    innerHTML += `<img src="${data[i].link}" alt="Image">`;
+            // Load all images
+            imageData.forEach(image => {
+                if (image.category === "ii_images") {
+                    innerHTML += `<img src="${image.link}" alt="Image">`;
                 }
-            }
+            });
 
             // Close the image grid div
             innerHTML += `</div></div>`;
@@ -213,7 +213,7 @@
             return fetch(link1);
         })
         .then((response) => response.json())
-        .then((data) => {
+        .then((internshipData) => {
             // Append the internship insights data
             let str1 = `
                 <div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end">
@@ -221,19 +221,16 @@
             `;
 
             let str2 = "";
-            for (let i = 0; i < data.length - 1; i++) {
+            for (let i = 0; i < internshipData.length; i++) {
                 str2 += `
                     <p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding: 5px; padding-left: 20px; padding-right: 20px;">
-                        ${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}
+                        ${internshipData[i].name} (${internshipData[i].department}), ${internshipData[i].company}, ${internshipData[i].course}
                     </p>
                 `;
             }
 
-            let str3 = `
-                <p style="border: 2px solid rgb(55, 141, 246); padding: 5px; padding-left: 20px; padding-right: 20px;">
-                    ${data[data.length - 1].name} (${data[data.length - 1].department}), ${data[data.length - 1].company}, ${data[data.length - 1].course}
-                </p>
-            </div></div></div>`;
+            // Close the insights container and the main flex container
+            let str3 = `</div></div></div>`;
 
             // Combine all innerHTML content and update the DOM
             innerHTML += str1 + str2 + str3;
@@ -244,6 +241,7 @@
             document.getElementById('content').innerHTML = "<p>Error loading content.</p>";
         });
 }
+
 
 
   function addStylingToContent() {
