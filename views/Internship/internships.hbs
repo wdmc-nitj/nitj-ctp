@@ -187,62 +187,41 @@
   function insightClick() {
     const link1 = `{{URL}}/Internship_Insights/`;
     const link2 = `{{URL}}/Placement_Insights_Img/`;
-    let innerHTML = "";
-
+    let innerHTML =  ""
     fetch(link2)
-        .then((response) => response.json())
-        .then((imageData) => {
-            // Initialize the image grid container
-            innerHTML += `
-                <div class="flex h-screen">
-                    <div class="w-3/4 p-4">
-                        <div class="image-grid">
+      .then((response) => response.json())
+      .then(async (data) => {
+        innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">
+        <div class="image-grid">`
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].category == "ii_images")
+          innerHTML += `<img src=${data[i].link} alt="Image">`
+        }
+
+        innerHTML += `</div>`
+      });
+
+       fetch(link1)
+      .then((response) => response.json())
+      .then(async (data) => {
+        
+        let str1 = `</div><div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end"><div class="mx-auto">`;
+        let str2 = "";
+        let i =0;
+          for ( i = 0; i < data.length-1; i++) {
+          var student = data[i];
+          str2 += `
+<p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p>
             `;
+          }
 
-            // Load all images
-            imageData.forEach(image => {
-                if (image.category === "ii_images") {
-                    innerHTML += `<img src="${image.link}" alt="Image">`;
-                }
-            });
-
-            // Close the image grid div
-            innerHTML += `</div></div>`;
-
-            // Fetch and display internship insights
-            return fetch(link1);
-        })
-        .then((response) => response.json())
-        .then((internshipData) => {
-            // Append the internship insights data
-            let str1 = `
-                <div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end">
-                    <div class="mx-auto">
-            `;
-
-            let str2 = "";
-            for (let i = 0; i < internshipData.length; i++) {
-                str2 += `
-                    <p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding: 5px; padding-left: 20px; padding-right: 20px;">
-                        ${internshipData[i].name} (${internshipData[i].department}), ${internshipData[i].company}, ${internshipData[i].course}
-                    </p>
-                `;
-            }
-
-            // Close the insights container and the main flex container
-            let str3 = `</div></div></div>`;
-
-            // Combine all innerHTML content and update the DOM
-            innerHTML += str1 + str2 + str3;
-            document.getElementById('content').innerHTML = innerHTML;
-        })
-        .catch((error) => {
-            console.error('Error fetching data:', error);
-            document.getElementById('content').innerHTML = "<p>Error loading content.</p>";
-        });
-}
-
-
+        let str3 = `<p style="border: 2px solid rgb(55, 141, 246);  padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p></div>`;
+        innerHTML += str1 + str2 + str3;
+         innerHTML +="</div></div>"
+      content.innerHTML = innerHTML;
+      });
+       
+  }
 
   function addStylingToContent() {
     // Add bullots
