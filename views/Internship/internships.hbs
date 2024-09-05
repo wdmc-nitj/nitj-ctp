@@ -185,127 +185,47 @@
   }
 
   function insightClick() {
-    let img_arr = [];
-    let size_images = 0;
+    const link1 = `{{URL}}/Internship_Insights/`;
+    const link2 = `{{URL}}/Placement_Insights_Img/`;
+    let innerHTML =  ""
+    fetch(link2)
+      .then((response) => response.json())
+      .then(async (data) => {
+        innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">
+        <div class="image-grid">`
 
-    // Fetch and display the images from the Placement Insights API
-    fetch(`{{URL}}/Placement_Insights_Img/`)
-        .then((response) => response.json())
-        .then((data) => {
-            // Filter images based on the category
-            const images = data.filter(img => img.category === 'ii_images');
+        for (let i = 0; i < Math.min(20, data.length); i++) {
+            if (data[i].category === "ii_images") {
+                innerHTML += `<img src="${data[i].link}" alt="Image">`;
+               }
+        }
 
-            // Shuffle the images array randomly
-            images.sort(() => 0.5 - Math.random());
 
-            // Update the global variables
-            size_images = images.length;
-            img_arr = images;
+        
+        innerHTML += `</div>`
+      });
 
-            // Create and populate the rows for image display
-            const parentDiv = document.getElementById('gallery');
-            const firstRow = document.createElement('div');
-            const secondRow = document.createElement('div');
-            const thirdRow = document.createElement('div');
-            const rows = [firstRow, secondRow, thirdRow];
-            rows.forEach(row => row.setAttribute('class', 'flex h-[22vh] w-full'));
+       fetch(link1)
+      .then((response) => response.json())
+      .then(async (data) => {
+        
+        let str1 = `</div><div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end"><div class="mx-auto">`;
+        let str2 = "";
+        let i =0;
+          for ( i = 0; i < data.length-1; i++) {
+          var student = data[i];
+          str2 += `
+<p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p>
+            `;
+          }
 
-            let i = 0;
-            let y = 1;
-
-            images.forEach((img, key) => {
-                if (y > 20) {
-                    return; // Only show 20 images
-                }
-                if (i > 2) {
-                    i = 0; // Cycle through the rows
-                }
-
-                const imgContainer = document.createElement('div');
-                imgContainer.classList.add('box');
-                imgContainer.innerHTML = `<img class="gallery-image" data-index="${key}" src="${img.link}" />`;
-
-                rows[i].appendChild(imgContainer);
-
-                imgContainer.addEventListener('click', (e) => {
-                    const imgSample = document.getElementById('sample-img');
-                    imgSample.src = e.srcElement.currentSrc;
-                    showImg();
-                });
-
-                i++;
-                y++;
-            });
-
-            parentDiv.append(firstRow, secondRow, thirdRow);
-        })
-        .catch((error) => {
-            console.error('Error fetching image data:', error);
-            document.getElementById('content').innerHTML = "<p>Error loading images.</p>";
-        });
-
-    // Fetch and display the internship insights
-    fetch(`{{URL}}/Internship_Insights/`)
-        .then((response) => response.json())
-        .then((data) => {
-            let innerHTML = '<div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end"><div class="mx-auto">';
-            data.forEach((student, i) => {
-                innerHTML += `
-                    <p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding: 5px; padding-left: 20px; padding-right: 20px;">
-                        ${student.name} (${student.department}), ${student.company}, ${student.course}
-                    </p>
-                `;
-            });
-            innerHTML += '</div></div>';
-            document.getElementById('content').innerHTML += innerHTML;
-        })
-        .catch((error) => {
-            console.error('Error fetching internship data:', error);
-            document.getElementById('content').innerHTML = "<p>Error loading insights.</p>";
-        });
-}
-
-function showImg() {
-    const big_viewer = document.getElementById('big-viewer');
-    const imgSample = document.getElementById('sample-img');
-    const crossbutton = document.getElementById('crossbutton');
-    const arrow_forward = document.getElementById('arrow_forward');
-    const arrow_back = document.getElementById('arrow_back');
-
-    if (imgSample.classList.contains('hidden')) {
-        document.body.classList.add('overflow-hidden');
-        big_viewer.classList.remove('hidden');
-        imgSample.classList.remove('hidden');
-        crossbutton.classList.remove('hidden');
-        arrow_forward.classList.remove('hidden');
-        arrow_back.classList.remove('hidden');
-    } else {
-        document.body.classList.remove('overflow-hidden');
-        big_viewer.classList.add('hidden');
-        imgSample.classList.add('hidden');
-        crossbutton.classList.add('hidden');
-        arrow_forward.classList.add('hidden');
-        arrow_back.classList.add('hidden');
-    }
-}
-
-// Navigation for the image viewer
-document.getElementById('crossbutton').addEventListener('click', showImg);
-
-document.getElementById('arrow_forward').addEventListener('click', () => {
-    const imgSample = document.getElementById('sample-img');
-    const currentImgIndex = img_arr.findIndex(img => img.link.toLowerCase().trim() === imgSample.src.toLowerCase().trim());
-    const nextImgIndex = (currentImgIndex + 1) % img_arr.length;
-    imgSample.src = img_arr[nextImgIndex].link;
-});
-
-document.getElementById('arrow_back').addEventListener('click', () => {
-    const imgSample = document.getElementById('sample-img');
-    const currentImgIndex = img_arr.findIndex(img => img.link.toLowerCase().trim() === imgSample.src.toLowerCase().trim());
-    const prevImgIndex = (currentImgIndex - 1 + img_arr.length) % img_arr.length;
-    imgSample.src = img_arr[prevImgIndex].link;
-});
-
+        let str3 = `<p style="border: 2px solid rgb(55, 141, 246);  padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p></div>`;
+        innerHTML += str1 + str2 + str3;
+         innerHTML +="</div></div>"
+      content.innerHTML = innerHTML;
+      });
+       
+  }
 
   function addStylingToContent() {
     // Add bullots
