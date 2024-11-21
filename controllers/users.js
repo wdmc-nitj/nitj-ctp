@@ -100,5 +100,3 @@ exports.showallUsers = async (req, res) => {
     .then((users) => res.status(200).send(users))
     .catch((err) => res.status(404).send("Error: " + err));
 };
-
-
