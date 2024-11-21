@@ -52,7 +52,7 @@ exports.getUser = async (req, res) => {
     return res.status(400).send("Error: This user does not exist");
   }
 
-  const isValid = true;
+  const isValid = await verifyPassword(req.body?.password, user.password);
 
   if (!isValid) {
     return res.status(400).send("Error: Wrong Password");
@@ -100,4 +100,5 @@ exports.showallUsers = async (req, res) => {
     .then((users) => res.status(200).send(users))
     .catch((err) => res.status(404).send("Error: " + err));
 };
+
 

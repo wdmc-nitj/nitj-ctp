@@ -2,26 +2,24 @@ const jwt = require("jsonwebtoken");
 const User = require("./../models/users");
 
 const authenticate = async (req, res, next) => {
-    try{
-        const token = req.cookies.jwtoken;
-        
-        if(token === undefined){
-            res.redirect("/auth");
-        }
-        else{
-            const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
-            const user = await User.findOne({ _id: verifyToken.user._id });
+  try {
+    const token = req.cookies.jwtoken;
 
-            if(!user){
-                throw new Error("You don't have admin rights");
-            }
+    if (token === undefined) {
+      res.redirect("/auth");
+    } else {
+      const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+      const user = await User.findOne({ _id: verifyToken.user._id });
 
-            next();
-        }
+      if (!user) {
+        throw new Error("You don't have admin rights");
+      }
+
+      next();
     }
-    catch(err){
-        res.status(400).send("No token");
-    }
-}
+  } catch (err) {
+    res.status(400).send("No token");
+  }
+};
 
 module.exports = authenticate;
