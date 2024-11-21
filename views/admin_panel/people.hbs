@@ -187,6 +187,9 @@
                                 <li>
                                     <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Edit FAQ</a>
                                 </li>
+                                <li>
+                                    <a href="{{URL}}/admin/queries"><i class="fa fa-edit fa-fw"></i> Queries</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -265,7 +268,6 @@
               <div class="row">
                 <div class="col-lg-6">
                   <form role="form" id="addForm">
-                   
                     <div class="form-group">
                       <label>Select the Type</label>
                       <select id="addcategory" name="menu" class="form-control">
@@ -278,11 +280,6 @@
                         <option value="Student">Student</option>
                       </select>
                     </div>
-
-                    {{!-- <div class="form-group">
-                      <label>Enter the Post of person</label>
-                      <input class="form-control" placeholder="Enter the Post of person" id="addcategory" name="category" />
-                    </div> --}}
 
                     <div class="form-group">
                       <label>Name</label>
@@ -320,11 +317,6 @@
 
                     <div class="form-group">
                       <label>Designation</label>
-                      <input class="form-control" placeholder="Enter Designation of Person" id="adddesignation" name="designation" />
-                    </div>
-
-                    {{!-- <div class="form-group">
-                      <label>Designation</label>
                       <select id="adddesignation" name="Designation" class="form-control">
                         <option value="">
                           Select type of the person.
@@ -338,8 +330,7 @@
                         <option value="Placement Representative">Placement Representative</option>
                         <option value="Internship Representative">Internship Representative</option>
                       </select>
-                    </div> --}}
-
+                    </div>
                     <div class="form-group">
                       <label>Mobile No.</label>
                       <input class="form-control" placeholder="Enter Mobile No. of Person" id="addmobileno"
@@ -387,7 +378,6 @@
                       <label>id</label>
                       <input class="form-control" placeholder="Enter id" id="editid" name="id" />
                     </div>
-                    
                     <div class="form-group">
                       <label>Select the Type</label>
                       <select id="editcategory" name="menu" class="form-control">
@@ -398,11 +388,6 @@
                         <option value="Student">Student</option>
                       </select>
                     </div>
-
-                    {{!-- <div class="form-group">
-                      <label>Enter the Post of person</label>
-                      <input class="form-control" placeholder="Enter the Post of Person" id="editcategory" name="category" />
-                    </div> --}}
 
                     <div class="form-group">
                       <label>Name</label>
@@ -437,7 +422,7 @@
                       </select>
                     </div>
 
-                    {{!-- <div class="form-group">
+                    <div class="form-group">
                       <label>Designation</label>
                       <select id="editdesignation" name="Designation" class="form-control">
                         <option value="">
@@ -452,14 +437,7 @@
                         <option value="Internship Representative">Internship Representative</option>
                         <option value="Other">Other</option>
                       </select>
-                    </div> --}}
-
-                    <div class="form-group">
-                      <label>Designation</label>
-                      <input class="form-control" placeholder="Enter Designation of Person" id="editdesignation"
-                        name="designation" />
                     </div>
-
                     <div class="form-group">
                       <label>Mobile No.</label>
                       <input class="form-control" placeholder="Enter Mobile No. of Person" id="editmobileno"
@@ -573,7 +551,7 @@
     function deleteNotice(e) {
       console.log("this");
       const personId = e.getAttribute("person-id");
-
+      
       axios
         .post(`{{URL}}/People/${personId}`)
         .then((response) => {
