@@ -7,6 +7,8 @@ const Router = express.Router();
 
 Router.route('/').post(faqsController.addFAQ).get(faqsController.getFAQ);
 
+Router.route('/publish/:id').post(faqsController.publishFAQ);
+
 Router.route('/:id').patch(faqsController.updateFAQ).post(faqsController.deleteFAQ);
 
 Router.route('/get/all').get(faqsController.showallFAQs);

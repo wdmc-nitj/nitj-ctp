@@ -52,6 +52,7 @@ exports.updatePerson = async (req, res) => {
 
 //----------------------------------------------------------------------->
 exports.deletePerson = async (req, res) => {
+
     Person.findByIdAndUpdate(req.params.id, { $set: { show: false } })
         .then(() => res.status(200).send("Person deleted."))
         .catch((err) => res.status(404).send("Error: " + err));
