@@ -12,6 +12,18 @@ const Schema = new mongoose.Schema(
             type: Boolean,
             default: true
         },
+        year:{
+            type:Number,
+            required:true
+        },
+        statsType:{
+            type: String,
+            required: true,
+        },
+        course:{
+            type: String,
+            required: true,
+        }
     },
     {
         timestamps: true,

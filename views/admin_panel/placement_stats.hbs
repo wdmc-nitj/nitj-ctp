@@ -187,6 +187,9 @@
                                 <li>
                                     <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Edit FAQ</a>
                                 </li>
+                                <li>
+                                    <a href="{{URL}}/admin/queries"><i class="fa fa-edit fa-fw"></i> Queries</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -265,11 +268,31 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form role="form" id="addForm">
-
+                                           
                                         <div class="form-group">
+                                         <label for="addCourse">Enter Course</label>
+                                           <select class="form-control" id="addCourse" name="Course">
+                                             <option value="" disabled selected>Select Course</option>
+                                             <option value="BTech">BTech</option>
+                                             <option value="MTech">MTech</option>
+                                             <option value="MBA">MBA</option>
+                                           </select>
+  
+                                          <label for="addStats">Enter Stats Type</label>
+                                           <select class="form-control" id="addStats" name="Stats">
+                                             <option value="" disabled selected>Select Stats Type</option>
+                                             <option value="Table">Table</option>
+                                             <option value="Chart">Chart</option>
+                                             <option value="Recruiter">Recruiter</option>
+                                           </select>
+                                            
+
+                                            <label>Enter year</label>
+                                            <input type="number" class="form-control" placeholder="Enter year" id="addYear" name="Year" min="2022" value="2022"/> 
+
                                             <label>Link of Image</label>
-                                            <input class="form-control" placeholder="Enter Link" id="addlink"
-                                                name="Image" />
+                                            <input class="form-control" placeholder="Enter Link" id="addlink" name="Image" />
+
                                         </div>
 
                                         <button type="submit" name="action" value="add_menu" class="btn btn-default">
@@ -303,9 +326,27 @@
                                         </div>
 
                                         <div class="form-group">
+                                             <label for="editcourse">Edit Course</label>
+                                           <select class="form-control" id="editcourse" name="Course">
+                                             <option value="" disabled selected>Select Course</option>
+                                             <option value="BTech">BTech</option>
+                                             <option value="MTech">MTech</option>
+                                             <option value="MBA">MBA</option>
+                                           </select>
+
+                                            <label for="editstats">Edit Stats Type</label>
+                                           <select class="form-control" id="editstats" name="Stats">
+                                             <option value="" disabled selected>Select Stats Type</option>
+                                             <option value="Table">Table</option>
+                                             <option value="Chart">Chart</option>
+                                             <option value="Recruiter">Recruiter</option>
+                                           </select>
+                                             
+                                            <label>Edit year</label>
+                                            <input type="number" class="form-control" placeholder="Edit year" id="edityear" name="Year" min="2022" value="2022"/> 
+
                                             <label>Link of Image</label>
-                                            <input class="form-control" placeholder="Enter Link" id="editlink"
-                                                name="Image" />
+                                            <input class="form-control" placeholder="Enter Link" id="editlink" name="Image" />
                                         </div>
 
                                         <button type="submit" class="btn btn-default">
@@ -377,9 +418,12 @@
 
             //finding data from apiData using id
             const data = apiData.find((item) => item._id == statsId);
-
+            console.log(data);
             editid.value = data._id;
             editlink.value = data.link;
+            edityear.value=data.year;
+            editstats.value=data.statsType;
+            editcourse.value=data.course;
             if (editdiv.style.display === "none") {
                 editdiv.style.display = "block";
             }
@@ -442,10 +486,10 @@
         addFormDom.addEventListener("submit", (e) => {
             e.preventDefault();
             const link = document.getElementById("addlink").value;
-
-            if (
-                link == ""
-            ) {
+            const year = document.getElementById("addYear").value;
+            const statsType = document.getElementById("addStats").value;
+            const course=document.getElementById("addCourse").value; 
+            if (link == ""  || year=="" ||statsType=="" || course=="") {
                 alert("Please enter all fields");
                 return;
             }
@@ -453,6 +497,9 @@
             axios
                 .post(`{{URL}}/Placement_Stats/`, {
                     link: link,
+                    year: year,
+                    statsType:statsType,
+                    course:course
                 })
                 .then((response) => {
                     console.log(response);
@@ -470,10 +517,12 @@
             e.preventDefault();
             const id = document.getElementById("editid").value;
             const link = document.getElementById("editlink").value;
+            const year= document.getElementById("edityear").value;
+            const statsType= document.getElementById("editstats").value;
+            const course= document.getElementById("editcourse").value;
+            console.log(id,link,year,statsType,course);
 
-            if (
-                link == ""
-            ) {
+            if ( link == "" || year=="" || statsType=="" ||course=="") {
                 alert("Please enter all fields");
                 return;
             }
@@ -481,6 +530,9 @@
             axios
                 .patch(`{{URL}}/Placement_Stats/${id}`, {
                     link: link,
+                    year: year,
+                    statsType:statsType,
+                    course:course
                 })
                 .then((response) => {
                     console.log(response);

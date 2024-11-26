@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" type="image/x-icon" href="../img/favicon-16x16.png" />
+
+  <title>Admin Panel</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/adm-assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="/adm-assets/dist/css/sb-admin-2.css" rel="stylesheet" />
+  <!-- Custom Fonts -->
+  <link href="/adm-assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    select{
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+  </style>
+</head>
+
+<body>
+  <!--whole page wrapper -->
+  <div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{URL}}/admin" style="color: #045942">NITJ TPO - SuperUser
+                </a>
+            </div>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Announcements<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/announcements"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Announcement</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/announcements"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Announcement</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        {{!-- <li>
+                            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Notices<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Add New Notice</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Edit Notice</a>
+                                </li>
+                            </ul>
+                        </li> --}}
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> NITJ Message<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Message</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Message</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-history"></i> Processes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/processes"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Process</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/processes"><i class="fa fa-edit fa-fw"></i> Edit Process</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-institution" aria-hidden="true"></i> Policies<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/policies"><i class="fa fa-edit fa-fw"></i> Add New Policy</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/policies"><i class="fa fa-edit fa-fw"></i> Edit Policy</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Placement Insights<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Insight info</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight info</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-image" aria-hidden="true"></i> Insights Images <span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Add
+                                        New Insight Images</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight Images</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Internship Insights<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Insight</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Downloadable Content<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Content</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Content</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-question" aria-hidden="true"></i> FAQ's<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Add New FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Edit FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/queries"><i class="fa fa-edit fa-fw"></i> Queries</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> People<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/people"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/people"><i class="fa fa-edit fa-fw"></i> Edit Person</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Placement Stats<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_stats"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Stats</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_stats"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Stats</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-code" aria-hidden="true"></i> Post Recruiters<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Recruiters Details</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Edit Recruiters
+                                        Details</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Users<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Edit Person</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    <!-- navbar ends  -->
+
+    <!-- page wrapper div  -->
+    <div id="page-wrapper">
+      <div class="panel-body" id="pendingTable">
+        <h1>Pending Queries</h1>
+        <div class="dataTable_wrapper">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example_n1">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Sent By</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Related To</th>
+                <th>options</th>
+              </tr>
+            </thead>
+            <tbody id="pendingTablebody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Resolved Table -->
+      <div class="panel-body" id="resolvedTable">
+        <h1>Resolved Queries</h1>
+        <div class="dataTable_wrapper">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example_n2">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Sent By</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Related To</th>
+                <th>options</th>
+              </tr>
+            </thead>
+            <tbody id="resolvedTablebody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- Modal for Answering/Updating Queries -->
+  <div id="answerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="answerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="answerModalLabel">Answer/Update Query</h4>
+        </div>
+        <div class="modal-body">
+          <form id="answerForm">
+            <div class="form-group">
+              <label for="question">Question</label>
+              <input type="text" class="form-control" id="question" readonly>
+            </div>
+            <div class="form-group">
+              <label for="answer">Answer</label>
+              <textarea class="form-control" id="answer" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="relatedTo">Related To</label>
+              <div class="custom-select">
+                <select id="relatedTo" name="relatedTo" class="form-control">
+                  <option value="Student">Student</option>
+                  <option value="Company">Company</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="updateQuery" onclick="updateQuery(this)" class="btn btn-success">Update</button>
+          <button type="button" id="publishQuery" onclick="publishQuery(this)" t_p="form" class="btn btn-primary">Publish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- jQuery -->
+  <script src="/adm-assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/adm-assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="/adm-assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="/adm-assets/dist/js/sb-admin-2.js"></script>
+  <script src="/adm-assets/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script
+    src="/adm-assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Js file -->
+  <script>
+    //import dom
+    const pendingTablebodyDom = document.getElementById("pendingTablebody");
+    const resolvedTablebodyDom = document.getElementById("resolvedTablebody");
+
+    let apiData;
+    let pendingApiData;
+    let resolvedApiData;
+
+
+    function openAnswerModal(quesId) {
+      const queryData = apiData.find(item => item._id === quesId);
+      
+      if (queryData) {
+        document.getElementById("question").value = queryData.question;
+        document.getElementById("answer").value = queryData.answer;
+        document.getElementById("relatedTo").value = queryData.related;
+        document.getElementById("updateQuery").setAttribute("query-id", quesId);
+        document.getElementById("publishQuery").setAttribute("query-id", quesId);
+        $('#answerModal').modal('show');
+      } else {
+        alert("Error: Query not found.");
+      }
+    }
+
+    function updateQuery(e) {
+      e.innerHTML = "Updating...";
+      const quesId = e.getAttribute("query-id");
+      const answer = document.getElementById("answer").value;
+      const relatedTo = document.getElementById("relatedTo").value;
+      const question = document.getElementById("question").value;
+
+      if(answer.trim() === "" || question.trim() === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      axios.patch(`{{URL}}/query/${quesId}`, {
+        answer: answer,
+        related: relatedTo,
+        question: question,
+      }).then((response)=> {
+        e.innerHTML = "Update";
+        console.log(response);
+        alert("Data updated successfully");
+        location.reload();
+      }).catch((error) => {
+        console.log(error);
+        alert("Error occurred while updating data on the server");
+      })
+    }
+
+    function deleteNotice(e) {
+      e.innerHTML = "Deleting...";
+      const quesId = e.getAttribute("query-id");
+      console.log(quesId);
+
+      axios
+        .post(`{{URL}}/query/${quesId}`)
+        .then((response) => {
+          e.innerHTML = "Delete";
+          console.log(response);
+          alert("Data deleted successfully");
+          location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Error occurred while deleting data from the server");
+        });
+    }
+
+
+    function publishQuery(e) {
+      // Get the query ID from the element
+      e.innerHTML = "Publishing...";
+      const quesId = e.getAttribute("query-id");
+      const from = e.getAttribute("t_p");
+      
+      // Find the query in apiData
+      const toPublish = apiData.find(item => item._id == quesId);
+      
+      let question=toPublish.question;
+      let answer=toPublish.answer;
+      let related=toPublish.related;
+
+      if(from){
+        question=document.getElementById("question").value;
+        answer=document.getElementById("answer").value;
+        related = document.getElementById("relatedTo").value;
+      }
+
+      // Check if the query exists
+      if (!toPublish) {
+        alert("Error: Query not found.");
+        return;
+      }
+
+      // Make the POST request to publish the query
+      axios.post(`{{URL}}/FAQs/publish/${quesId}`, {
+          question: question,
+          answer: answer,
+          related: related,
+        })
+        .then((response) => {
+          e.innerHTML = "Publish";
+          console.log(response);
+          alert("Published successfully");
+          location.reload(); // Reload the page after success
+        })
+        .catch((error) => {
+          console.error("Error occurred:", error);
+          alert("Error occurred while adding data to the server.");
+      });
+    }
+
+    // Clear the table body before adding new data
+    function clearTable(tableBodyDom) {
+      tableBodyDom.innerHTML = '';
+    }
+
+    // adding data to table
+    function addDataToPendingTable(data) {
+      clearTable(pendingTablebodyDom); // Clear the existing data
+      if (data.length > 0) {
+        for (let i = 0; i < data.length; i++) {
+
+          pendingTablebodyDom.innerHTML += `<tr>
+            <td>${data[i]._id}</td>
+            <td>
+              Name : ${data[i].name} <br>
+              Email : ${data[i].email} <br>
+              Phone : ${data[i].phone}<br>
+              ${data[i].insiderOutsider}<br>
+              Roll No : ${data[i].rollNumber}<br>
+            </td>
+            <td>${data[i].question}</td>
+            <td>${data[i].answer}</td>
+            <td>${data[i].related}</td>
+            <td>
+            <button type="button" class="btn btn-primary btn-xs" onclick="openAnswerModal('${data[i]._id}')">Answer</button>
+              <button onclick="deleteNotice(this)" query-id="${data[i]._id
+            }" type="button" class="btn btn-danger btn-xs">Delete</button>
+            </td>
+          </tr>`;
+        }
+      } else {
+        document.getElementById("pendingTable").style.display = "none"; // Hide table if no data
+      }
+    }
+
+    function addDataToResolvedTable(data) {
+      clearTable(resolvedTablebodyDom); // Clear the existing data
+      if (data.length > 0) {
+        for (let i = 0; i < data.length; i++) {
+
+          resolvedTablebodyDom.innerHTML += `<tr>
+            <td>${data[i]._id}</td>
+            <td>
+              Name : ${data[i].name} <br>
+              Email : ${data[i].email} <br>
+              Phone : ${data[i].phone}<br>
+              ${data[i].insiderOutsider}<br>
+              Roll No : ${data[i].rollNumber}<br>
+            </td>
+            <td>${data[i].question}</td>
+            <td>${data[i].answer}</td>
+            <td>${data[i].related}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-xs" onclick="openAnswerModal('${data[i]._id}')">Update</button>
+                <button type="button" onclick="publishQuery(this)" query-id="${data[i]._id}" class="btn btn-primary btn-xs">Publish</button>
+                <button onclick="deleteNotice(this)" query-id="${data[i]._id}" type="button" class="btn btn-danger btn-xs" >Delete</button>
+            </td>
+          </tr>`;
+        }
+      } else {
+        document.getElementById("resolvedTable").style.display = "none"; // Hide table if no data
+      }
+    }
+
+    // Fetch data from server
+    axios
+      .get(`{{URL}}/query/get/all`)
+      .then((response) => {
+
+        apiData = response.data;
+        pendingApiData = response.data.filter(item => item.state === "pending");
+        resolvedApiData = response.data.filter(item => item.state === "resolved");
+
+        // Populate tables with data
+        addDataToPendingTable(pendingApiData);
+        addDataToResolvedTable(resolvedApiData);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error occurred while fetching data from server");
+    });
+
+
+  </script>
+</body>
+<!-- default date and time picker-->
+
+<!-- default date and time picker ends here-->
+
+</html>

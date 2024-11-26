@@ -7,7 +7,8 @@ exports.addPlacement_Insight = async (req, res) => {
     req.body?.department === undefined ||
     req.body?.package === undefined ||
     req.body?.year === undefined ||
-    req.body?.company === undefined
+    req.body?.company === undefined ||
+    req.body?.image === undefined 
   ) {
     return res.status(400).send("Error: All fields are required");
   }
@@ -19,6 +20,7 @@ exports.addPlacement_Insight = async (req, res) => {
     package: req.body?.package,
     year: req.body?.year,
     company: req.body?.company,
+    image:req.body?.image
   });
 
   placement_insight
